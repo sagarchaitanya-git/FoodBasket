@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FoodBasket.Models.Country>
+
+@{
+    ViewData["Title"] = "Country List";
+}
+
+<h1>Country List</h1>
+
+<p>
+    <a asp-action="AddCountry">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Currency.CurrencyName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Currency.CurrencyName)
+            </td>
+            <td>
+                <a asp-action="EditCountry" asp-route-id="@item.CountryId">Edit</a> |
+                <a asp-action="CountryDetails" asp-route-id="@item.CountryId">Details</a> |
+                <a asp-action="DeleteCountry" asp-route-id="@item.CountryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
